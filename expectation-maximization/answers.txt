@@ -1,0 +1,42 @@
+Cameron Wonchoba
+wonch002
+5239321
+
+Problem1:
+  - I attached a file that shows my solution to part 1.
+
+Problem2:
+
+a) Attached as separate pictures are my compressed images. Each picture is labeled
+   with which k it used. (k being the number of clusters/distributions).
+
+b) Attached as separate pictures are my complete log-likelihood graphs.
+   Note: Both the E-Step and M-Step are both included.
+
+c) KMeans and EM behave differently because KMeans focuses on minimizing the
+   reconstruction error while EM focuses on maximizing the expected likelihood
+   of its parameters occurring with each set of data. This results in differences
+   in the goal of the algorithms, and thus allow the algorithm to choose different
+   values for their means to satisfy their condition.
+
+   Note: When implementing EMG on Goldy without regularization, we get a singular
+         matrix which causes a failure. I catch this error and print the following
+         error message:
+
+              - "Error: Singular Matrix detected. Trying again with regularization term."
+
+         I then retry the EMG algorithm with flag set to True (as question "e"
+         suggests). More on the results in section "e".
+
+d) I derived the regularization in the attached file labeled "problem 4". I then
+   added an arbitrary (0.01) regularization term to the covariance calculation in
+   the function called m_step(). This regularization prevents a singular Matrix
+   from occurring. Note: A singular matrix is not good because the multivariate
+   gaussian distribution relies on the inverse of the covariance matrix. When a
+   matrix is singular, the inverse does not exist (because the determinant is 0).
+
+e) The new model was implemented. My Goldy picture is slightly odd because the
+   covariance matrix is being tinkered with (regularization). Consequently, the
+   means must offset this tinkering to ensure the parameters are optimized for a
+   given distribution. This means that the colors are slightly offset from their
+   true values.
